@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Tax Invoice</title>
+        <style>
+            body
+            {
+                font-family: Arial,sans-serif;
+                margin: 20px;
+            }
+            h2
+            {
+                color: #007bff;
+            }
+            table
+            {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th,td
+            {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            .total
+            {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2 style="text-align: center;">Tax Invoice</h2>
+            <div style = "width: 50%;margin-left: auto;display: flex;justify-content: space-between;padding-right: 50px;">
+                <span>Invoice Number:</span>
+                <span>${invoiceNo}</span>
+            </div>
+            <div style = "width: 50%;margin-left: auto;display: flex;justify-content: space-between;padding-right: 50px;">
+                <span>Invoice Date:</span>
+                <span>${invoiceDate}</span>
+            </div>
+            <div> 
+                <p style="text-decoration: underline;"><strong>J.B.ENTERPRISES</strong></p>
+                <div style = "line-height:0.4;">
+                    <p>A/9, Giriraj Industriie ESTATE</p>
+                    <p>Mahakali Caves Road, Andheri East</p>
+                    <p>Mumbai : 400 093</p>
+                    <p>GSTIN : 27BTFPK4672PIZZ</p>
+                </div>
+            </div>
+
+            <div style = "margin-top: 50px;">
+                <p style="text-decoration: underline;"><strong>Billing Address</strong></p>
+                <div style = "line-height:0.4;">
+                    <p><strong>Customer Name:</strong>${customerName}</p>
+                    <p><strong>Address:</strong>${customerAddress}</p>
+                    <p><strong>GSTIN:</strong>${customerGST}</p>
+                </div>
+            </div>
+
+           
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${items.map((item) =>
+                <tr>
+                    <td>${item.description}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.unitPrice}</td>
+                    <td>${item.totalItem}</td>
+                </tr>
+                
+                
+                ).join("")}
+        </tbody>
+    </table>
+    <p class="total">TotalAmount: ${totalAmount}</p>
+    </body>
+</html>
